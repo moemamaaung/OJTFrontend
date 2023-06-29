@@ -1,0 +1,47 @@
+.msg{
+    font-size: 22px;
+    bottom: 50px;
+}
+.text{
+    text-align: center;
+    font-weight: 300px;
+    margin-bottom: 50px;
+   
+}
+.vd{
+    width: 100%;
+     height:500px;
+     background-color: black; 
+     border-radius: 6px;
+     box-shadow: black;
+
+  }
+  .height{
+    width: 100%;
+    height: 500px;
+}
+.programFee{
+    color:#082045;
+   
+    margin-bottom: 150px;
+
+  }
+
+
+  .img{
+    max-width:100%;height: 400px;box-shadow: 0 2px 8px black;border-radius: 6px;
+}
+.color{
+    background-color: #082045;
+}
+
+
+.text{
+    color: #082045;
+}
+.color1{
+    background-color: #082045;
+}
+th{
+    color: aliceblue;
+}

@@ -1,0 +1,223 @@
+.image{
+    height: 150px;
+    width: 175px;
+}
+
+.footer {
+    padding: 90px 0 80px !important;
+    color: #cccccc;
+  background:#4c5a7d no-repeat center; 
+}
+
+.footer .widgettitle {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer .widgettitle small {
+    color: #cccccc;
+    display: block;
+    padding: 0 58px;
+    text-transform: uppercase;
+}
+
+.footer .widgettitle h3 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    padding: 0;
+    margin: 0;
+    line-height: 1 !important;
+}
+
+.footerlinks {
+    list-style: none;
+    padding: 0;
+}
+
+.footerlinks a {
+    color: #cccccc;
+}
+
+.footerlinks a:hover,
+.footer a:hover {
+    color: #f4f4f4 !important;
+}
+
+.footerlinks li {
+    margin-bottom: 5px;
+    display: block;
+    width: 100%;
+  padding: 5px 0px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.twitterwidget li {
+    margin-bottom: 0;
+    border: 0 !important;
+}
+
+.twitterwidget li i {
+    border-right: 0 !important;
+    margin-right: 0;
+}
+
+.footerlinks li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: 0;
+}
+
+.footerlinks i {
+    display: inline-block;
+    width: 25px;
+    margin-right: 10px;
+    border-right: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.copyrights {
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    background-color: #1f1f1f;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0px;
+    overflow: hidden;
+}
+
+
+/* Footer left */
+
+.footerdistributed .footerleft {
+    float: left;
+}
+
+.footerdistributed .footerlinks {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    padding: 0;
+}
+
+.footerdistributed .footerlinks a {
+    display: inline-block;
+    line-height: 1.8;
+    margin: 0 10px 0 10px;
+    text-decoration: none;
+}
+
+.footerdistributed .footercompanyname {
+    font-weight: 300;
+    margin: 0 10px;
+    color: #666;
+    padding: 5px 0px;
+
+}
+.footerdistributed .footercompanyname span{
+    color:white;
+}
+
+
+
+.footerdistributed .footerright {
+    float: right;
+}
+
+
+
+.footerdistributed form {
+    position: relative;
+}
+
+.footerdistributed form input {
+    display: block;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #181818;
+    border: none;
+    font: inherit;
+    font-size: 15px;
+    font-weight: normal;
+    color: #999;
+    width: 400px;
+    padding: 18px 50px 18px 18px;
+}
+
+.footerdistributed form input:focus {
+    outline: none;
+}
+
+
+/* Changing the placeholder color */
+
+.footerdistributed form input::-webkit-input-placeholder {
+    color: #999;
+}
+
+.footerdistributed form input::-moz-placeholder {
+    opacity: 1;
+    color: #999;
+}
+
+.footerdistributed form input:-ms-input-placeholder {
+    color: #999;
+}
+
+
+/* The magnify glass icon */
+
+.footerdistributed form i {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    color: #999;
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+
+.footerdistributed .footer-company-name a{
+  color: #ffffff;
+}
+
+.footerdistributed .footer-company-name a:hover{
+  color: #3aebcd;
+}
+.footerlinkssoi{
+  margin: 0px;
+  padding: 0px;
+}
+.footerlinkssoi li{
+  display: inline-block;
+}
+.footerlinkssoi li a{
+  background: #ffffff;
+  color: #333333;
+  width: 32px;
+  height: 32px;
+  display: block;
+  font-size: 22px;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 2px;
+}
+.footerlinkssoi li a:hover{
+  background: #3aebcd;
+}
+.footerlinkssoi li a:hover i{
+  color: #ffffff;
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+}
+
+.footerlinkssoi li a i{
+  -webkit-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+.footercenter{
+  text-align: center;
+}

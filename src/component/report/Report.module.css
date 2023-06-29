@@ -1,0 +1,30 @@
+.cl {
+  padding: 30px;
+  font-size: 10px;
+  background-color: #39505f;
+  
+}
+.card1 {
+  background-color: rgb(6, 28, 128);
+  /* padding-top: 5px; */
+  height: 100px;
+}
+
+h3 {
+  color: white;
+}
+h4 {
+  color: white;
+}
+.idesign {
+  background-color: white;
+  top: 0;
+  height: 100px;
+ 
+}
+span{
+    position: relative !important;
+    top: 0;
+    height: 100px;
+    
+}

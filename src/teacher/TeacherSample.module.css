@@ -1,0 +1,27 @@
+.teamitem {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+}
+
+.teamitem img {
+    transition: .5s;
+}
+
+.teamitem:hover img {
+    transform: scale(1.1);
+}
+.teamitem div{
+    margin-top: -19px;
+}
+
+.team-item .btn {
+    background: #FFFFFF;
+    color: var(--primary);
+    border-radius: 20px;
+    border-bottom: 1px solid var(--primary);
+}
+
+.team-item .btn:hover {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
