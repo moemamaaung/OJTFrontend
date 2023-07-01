@@ -11,13 +11,13 @@ const UpdateAcademicYearForm = () => {
   console.log(academicyears)
 
   const [id,setId] = useState(academicyears?.id);
-  const [name, setAcademicyear] = useState(academicyears?.name)
+  const [value, setAcademicyear] = useState(academicyears?.value)
   const [addRequestStatus,setAddRequestStatus]= useState('idle')
 
   const onAcademicIdChange = e => setId(e.target.value)
   const onAcademicChange = e => setAcademicyear(e.target.value)
 
-  const canSave = [id, name].every(Boolean) && addRequestStatus === 'idle'
+  const canSave = [id, value].every(Boolean) && addRequestStatus === 'idle'
  
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -35,7 +35,7 @@ const UpdateAcademicYearForm = () => {
                
                   updateAcademicYear({
                       id,
-                      name
+                      value
                   }),
               )
           }
@@ -77,14 +77,12 @@ const UpdateAcademicYearForm = () => {
                                         placeholder="Name" 
                                         required 
                                         className={classes.name} 
-                                        value={name}
+                                        value={value}
                                         onChange={onAcademicChange}
                                         />
 
                                     </div>
                                 </div>
-
-
 
                     </div>
 

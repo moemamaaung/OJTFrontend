@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { base_url }  from '../config/baseUrl'
 
-const REGISTER_URL = `${base_url}/user/create/`
+const REGISTER_URL = `${base_url}/user/create`
 const GET_REGISTER_URL = `${base_url}/user/all`
 
 export const register =createAsyncThunk('users/register',async(user)=>{
     console.log(user)
-    const response = await axios.post(`${REGISTER_URL}${user.programId}`,user,{
+    const response = await axios.post(REGISTER_URL,user,{
         'Content-Type':'application/json',
     })
     return response.data

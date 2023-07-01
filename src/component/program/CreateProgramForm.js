@@ -8,33 +8,25 @@ import academicyearSlices, { fetchAcademicyears, selectAllAcademicyears } from '
 import { useEffect } from 'react'
 
 
-const CreateProgramForm = (props) => {
-
-
+const CreateProgramForm = () => {
     const [programName, setProgramName] = useState('')
     const [programFee, setProgramFee] = useState('')
     const [ACADEMICYEAR_ID, setAcademicyearId] = useState('')
+    
+
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
 
     const onProgramNameChange = e => setProgramName(e.target.value)
     const onProgramFeeChange = e => setProgramFee(e.target.value)
     const onAcademicIdChange = e => setAcademicyearId(e.target.value)
+   
 
-
-    const academicyears = useSelector(selectAllAcademicyears)
-    console.log(academicyears)
-    
     const canSave = [programName, programFee].every(Boolean) && addRequestStatus === 'idle'
 
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    useEffect(() => {
-        dispatch(fetchAcademicyears())
-        dispatch(fetchPrograms())
 
-
-    }, [dispatch])
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -58,19 +50,17 @@ const CreateProgramForm = (props) => {
             } finally {
                 setAddRequestStatus('idle')
             }
-
+           
             setProgramName('');
             setProgramFee('');
 
             navigate(`/admin/program`)
         }
-    }
+       
 
-    const selectedAcademic = () => {
-        
     }
+    const academicyears = useSelector(selectAllAcademicyears)
 
- 
 
     return (
         <div className={classes.all}>
@@ -119,26 +109,26 @@ const CreateProgramForm = (props) => {
                                     </div>
                                 </div>
 
+
                                 <div className={classes.inputGroup}>
                                     <div className={classes.inputBox}>
                                         <select
                                             className={classes.name}
                                             value={ACADEMICYEAR_ID}
                                             onChange={onAcademicIdChange}
-                                            onClick={selectedAcademic} >
+
+                                        >
                                             <option value="">Choose AcademicYear</option>
 
-                                            {academicyears.map((a) =>
-
-                                                <option
-                                                    key={a.id}
-                                                    value={a.id}
-                                                    disabled={a.id === Number(ACADEMICYEAR_ID)}  >
-                                                    {a.value}
+                                            {academicyears.map((year) => (
+                                                
+                                                <option key={year.id} 
+                                                value={year.id} 
+                                                // disabled = {year.id === (ACADEMICYEAR_ID) }
+                                               >
+                                                    <span> {year.value} </span>
                                                 </option>
-
-
-                                            )};
+                                            ))}
 
                                         </select>
 

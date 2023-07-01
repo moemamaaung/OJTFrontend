@@ -12,9 +12,6 @@ const UpdateProgramForm = () => {
     console.log("pppppp"+programId)
     console.log("ooooo"+program)
 
-
-
-
     const [id, setId] = useState(program?.id);
     const [programName, setProgramName] = useState(program?.programName);
     const [programFee, setProgramFee] = useState(program?.programFee);

@@ -23,6 +23,7 @@ const MList = () => {
   
     const mark = useSelector((state) => selectUserMarkById(state,pfullname))
     console.log(mark)
+    
     console.log(markStatus)
   
     let content;

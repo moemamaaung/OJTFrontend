@@ -140,7 +140,12 @@
   width: 400px;
   height: 400px;
 }
-
+.login{
+  color: #a7c560;
+   background-color: rgb(26, 166, 201);
+   font-size: 20px;
+   font-weight: 400;
+}
   
   /* Hover Effects on Card */
   

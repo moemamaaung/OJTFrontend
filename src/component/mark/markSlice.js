@@ -109,7 +109,7 @@ export const getMarkError = (state) => state.marks.error;
 export const selectMarkById = (state, markId) =>
 state.marks.marks.find((mark) => mark.id === markId);
 
-export const selectUserMarkById = (state,markId) => state.marks.marks.find(mark => mark.course.id === markId)
+export const selectUserMarkById = (state,markId) => state.marks.marks.find(mark => mark.exam.id === markId)
 
 export const { addMark } = markSlice.actions;
 export default markSlice.reducer;

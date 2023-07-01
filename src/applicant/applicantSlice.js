@@ -2,11 +2,29 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 const GET_ALL_APPLICANTS = 'http://localhost:8585/api/applicant/all'
-const POST_NEW_APPLICANTES = 'http://localhost:8585/api/applicant/create'
+const POST_NEW_APPLICANTES = 'http://localhost:8585/api/applicant/create/'
 const DELETE_APPLICANT = 'http://localhost:8585/api/applicant/delete/'
 const POST_NEW_CONFIRM_APPLICANT ='http://localhost:8585/api/confirm/create'
 
+// export const addNewApplicant = createAsyncThunk('applicants/addNewApplicant',async (data)=>{
+//     console.log("Hello data "+data)
+//     console.log("Program Id in AddNew Applicant"+data.PROGRAM_ID)
+//     await axios.post(`${POST_NEW_APPLICANTES}${data.PROGRAM_ID}`)
+//     // await axios.post(POST_NEW_APPLICANTES)
+//     await axios.get(GET_ALL_APPLICANTS)
+//     const response = await axios.get(GET_ALL_APPLICANTS)
+//     return response.data
+// })
 
+
+export const addNewApplicant = createAsyncThunk('applicants/addNewApplicant',async (data)=>{
+    console.log("Hello data "+data)
+    console.log("Program Id in AddNew Applicant"+data.PROGRAM_ID)
+    const response = await axios.post(`${POST_NEW_APPLICANTES}${data.PROGRAM_ID}`,data)
+    
+ 
+    return response.data
+})
 
 export const fetchApplicants = createAsyncThunk('applicants/fetchApplicants', async () => {
     const response = await axios.get(GET_ALL_APPLICANTS)
@@ -15,12 +33,7 @@ export const fetchApplicants = createAsyncThunk('applicants/fetchApplicants', as
 
 
 
-export const addNewApplicant = createAsyncThunk('applicants/addNewApplicant',async (data)=>{
-    console.log(data)
-    await axios.post(POST_NEW_APPLICANTES,data)
-    const response = await axios.get(GET_ALL_APPLICANTS)
-    return response.data
-})
+
 
 export const deleteApplicant = createAsyncThunk('applicants/deleteApplicant', async (id) => {
     const response = await axios.delete(`${DELETE_APPLICANT}${id}`);
@@ -43,9 +56,7 @@ const initialState = {
 export const applicantSlice = createSlice({
     name: 'applicants',
     initialState,
-            reducers:{
-            
-            },
+            reducers:{},
    
     extraReducers(builder) {
         builder
@@ -81,7 +92,6 @@ export const applicantSlice = createSlice({
 
     }
 })
-
 
 
 export const selectAllApplicants = (state) => state.applicants.applicants

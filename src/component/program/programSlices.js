@@ -84,6 +84,6 @@ export const  getProgramStatus = (state)=> state.programs.status
 export const  getProgramError = (state)=> state.programs.error 
 
 export const selectProgramById = (state,programId) => state.programs.programs.find(program => program.id === programId)
-export const selectProgramAById = (state,name) => state.programs.programs.find(program => program.academicyear.name !== name)
+export const selectProgramAByName = (state,programName) => state.programs.programs.find(program => program.programName === programName)
 export const { addProgram }   = programSlices.actions
 export default programSlices.reducer

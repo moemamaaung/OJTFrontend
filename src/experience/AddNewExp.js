@@ -1,13 +1,35 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addNewExp } from './experienceSlice'
 import classes from './AddNewExp.module.css'
+import { fetchApplicants, selectAllApplicants } from '../applicant/applicantSlice'
 
 const AddNewExp = () => {
 
-    const { applicantId } = useParams()
-    console.log("Applicant Id inExp: "+applicantId)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        
+        dispatch(fetchApplicants())
+ 
+},[])
+   
+    // const { applicantId } = useParams()
+
+    // console.log("Applicant Id in New Edu: "+applicantId)
+
+    const applicants = useSelector(selectAllApplicants)
+    let applicant;
+    console.log("All applicants "+applicants)
+    if(applicants.length === 0){
+       applicant = applicants
+    }else{
+        applicant = applicants[ applicants.length - 1]
+    }
+
+    const applicantId = applicant.id
+    console.log("Id IN Add Exp"+applicantId)
+
 
 
     const [position, setPosition] = useState('')
@@ -23,7 +45,7 @@ const AddNewExp = () => {
 
     const canSave = [position, company, startDate, endDate].every(Boolean) && addRequestStatus === 'idle'
 
-    const dispatch = useDispatch()
+    
     const navigate = useNavigate()
 
     const onSubmit = (event) => {
@@ -44,7 +66,7 @@ const AddNewExp = () => {
                     })
                 ).unwrap()
 
-                navigate(`/`)
+                navigate(`/viewapp`)
             } catch (error) {
                 console.log(error)
             } finally {

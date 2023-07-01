@@ -71,7 +71,7 @@ const CreateCourseForm = () => {
       setSubject6("")
 
 
-      navigate('/admin')
+      navigate('/admin/courseTable')
     }
   };
 

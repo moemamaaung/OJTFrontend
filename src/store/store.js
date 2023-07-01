@@ -11,6 +11,9 @@ import authReducer from '../component/features/auth/authSlice'
 import applicantSlice from "../applicant/applicantSlice";
 import edubackgroundSlice from "../edubackground/edubackgroundSlice";
 import experienceSlice from "../experience/experienceSlice";
+import confirmSlice from "../applicant/confirmSlice";
+import emailSlice from "../email/emailSlice";
+
 
 export const store = configureStore({
     reducer:{
@@ -25,6 +28,8 @@ export const store = configureStore({
         marks : markReducer,
         times : timeReducer,
         users : userReducer,
-        auths : authReducer
+        auths : authReducer,
+        confirms:confirmSlice,
+        email:emailSlice
     }
 })

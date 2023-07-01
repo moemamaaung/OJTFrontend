@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { fetchCourses, getCourseError, getCourseStatus, selectAllCourses } from "../../course/courseSlice";
 import { selectProgramCourseById } from "../../course/courseSlice";
 import CourseItem from "./CourseItem"
+import { getUser } from "../../features/auth/authSlice";
 
 const CourseList = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,14 @@ const CourseList = () => {
   const courseStatus = useSelector(getCourseStatus);
   const courseError = useSelector(getCourseError);
 
-  const loginUser = useSelector(state => state.auths.user);
+  
+  const loginUser = useSelector(getUser);
+  
   console.log(loginUser)
-  const pId = loginUser.program.id;
+
+  const pId = loginUser.program.id
+
+  console.log("PPPPPPPPPPPPPPPPPPPPPPPPPP")
   console.log("In the user profile Form id is :" + pId);
 
   useEffect(() => {

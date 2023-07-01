@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import classes from './ProgramFee.module.css'
+import { Link } from 'react-router-dom'
 
 
 
@@ -25,7 +26,7 @@ const ProgramFee = (props) => {
           
                 </ul>
                 <div className={classes.btnarea}>
-                  <a href="/add">Join</a>
+                  <Link to= {`/applicant/add/${props.id}`}>Join</Link>
                 </div>
               </div>
             </div>

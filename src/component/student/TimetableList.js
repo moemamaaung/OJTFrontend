@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 function TimetableList(props) {
     const dispatch = useDispatch();
 
-    const timetables = useSelector(selectAllTimes);
-    console.log("timetableList" + timetables)
+    // const timetables = useSelector(selectAllTimes);
+    // console.log("timetableList" + timetables)
     const timetableStatus = useSelector(getTimeStatus)
     const timetableError = useSelector(getTimeError)
 

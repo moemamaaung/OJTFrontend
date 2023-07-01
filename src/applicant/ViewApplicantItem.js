@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import classes from './ViewApplicantItem.module.css'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
+
+
 
 
 const ViewApplicantItem = (props) => {
+  console.log(props)
+  console.log("id"+props.id);
+
+  const applicantId = props.id
+  console.log("jdhkfkdgjh"+applicantId)
+  
   return (
 
     <div className={classes.all}>
@@ -15,13 +23,27 @@ const ViewApplicantItem = (props) => {
           <div className={classes.row}>
             <div className={classes.col}>
               <div className={classes.col}>
+
+           
+
+                <div className={classes.inputGroup}>
+                  <div className={classes.inputBox}>
+                    <input
+                      type="text"
+                      name='id'
+                      className={classes.id}
+                    value={applicantId}
+                    />
+                  </div>
+                </div>
+
                 <div className={classes.inputGroup}>
                   <div className={classes.inputBox}>
                     <input
                       type="text"
                       name='name'
                       className={classes.name}
-                      value={props.name}
+                      value={props.fullname}
                     />
                   </div>
                 </div>
@@ -31,7 +53,7 @@ const ViewApplicantItem = (props) => {
                       type="email"
                       name='email'
                       className={classes.name}
-                      value={props.email}
+                      value={props.username}
                     />
                   </div>
                 </div>
@@ -87,24 +109,51 @@ const ViewApplicantItem = (props) => {
                 </div>
 
                 <div className={classes.inputGroup}>
-                <div className={classes.inputBox}>
-                 
-                    <button  className={classes.btn}>
-                    <Link to={`/newedu/${Number(props.id)}`}>Add Education</Link>                      
-                    </button>
-                   
-                    
+                  <div className={classes.inputBox}>
+                    <input
+                      type="text"
+                      name='name'
+                      className={classes.name}
+                      value={props.program?.programName}
+                    />
+                  </div>
                 </div>
+
+                <div className={classes.inputGroup}>
+                  <div className={classes.inputBox}>
+                  
+                      <button className={classes.btn}>
+
+                      <Link to='/newedu'>Add Edu</Link>
+                      </button>
+                  
+
+                  </div>
+                </div>
+
+                <div className={classes.inputGroup}>
+                  <div className={classes.inputBox}>
+                  
+                      <button className={classes.btn}> 
+                      <Link to='/newexp'>  Add Experience</Link>
+                      
+                      </button>
+                  </div>
+                </div>
+                <div className={classes.inputGroup}>
+                  <div className={classes.inputBox}>
+                  
+                      <button className={classes.btn}> 
+                      <Link to='/'> Done</Link>
+                      
+                      </button>
+                  </div>
+                </div>
+               
+
+
               </div>
-              <div className={classes.inputGroup}>
-                <div className={classes.inputBox}>
-              <button  className={classes.btn}>
-                    <Link to={`/newexp/${Number(props.id)}`}>Add Experience</Link>                      
-                    </button>
-              </div>
-              </div>
-              </div>
-              
+
             </div>
           </div>
         </form>

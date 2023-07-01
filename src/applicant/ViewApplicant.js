@@ -8,18 +8,24 @@ const ViewApplicant = () => {
     const dispatch = useDispatch()
 
     const applicants = useSelector(selectAllApplicants)
-    const applicant = applicants[applicants.length -1]
-    console.log("Applicants : "+applicant)
+    let applicant;
+    console.log(applicants)
+
+    if(applicants.length === 0){
+       applicant = applicants
+    }else{
+        applicant = applicants[ applicants.length - 1]
+    }
+
+    console.log("Last Applicant : "+applicant)
     const applicantStatus = useSelector(getApplicantStatus)
     console.log(applicantStatus)
     const error = useSelector(getApplicantError)
 
     useEffect(() => {
         
-        if(applicantStatus === 'idle'){
              dispatch(fetchApplicants())
-            
-        }
+      
     },[])
 
 
@@ -33,14 +39,16 @@ const ViewApplicant = () => {
         content = 
             (
                 <ViewApplicantItem
-                id={Number(applicant.id)}
-                name={applicant.name}
-                email={applicant.email}
+               
+                id={applicant.id}
+                fullname={applicant.fullname}
+                username={applicant.username}
                 phno={applicant.phno}
                 street={applicant.street}
                 township={applicant.township}
                 city={applicant.city}
                 gender={applicant.gender}
+                program = {applicant.program}
                 />
                 
             )

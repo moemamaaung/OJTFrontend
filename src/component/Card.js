@@ -10,9 +10,11 @@ import Contact from './Contact'
 import History from './history/History'
 import Footer from './footer/Footer'
 import Report from './report/Report'
+import { Link } from 'react-router-dom'
 
 const Card = () => {
 
+  const login = `btn btn text-light me-3  ${classes.login}`
   const btn1 =`btn btn-primary py-md-2 px-md-4 font-weight-semi-bold   ${classes.btn1}`
   const top = `carousel-caption  ${classes.top}`
   const home =`container-fluid ${classes.home}`
@@ -29,7 +31,8 @@ const Card = () => {
     <div className={top}>
     <h2 className={font4}>"For your better carrier and brighter future"</h2>
     <h1 className={font2}>2 Year Certificate Program</h1>
-    <a href="" className={btn1}>Register Now</a>
+    {/* <a href="" className={btn1}>Register Now</a> */}
+    <Link to='/applicantForm' className={btn1} type="button">Applicant Form</Link>
    
     </div>
    

@@ -12,6 +12,7 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 
 
 const UserTable = () => {
+  const dispatch = useDispatch()
   
   $(document).ready(function () {
     setTimeout(function () {
@@ -19,7 +20,7 @@ const UserTable = () => {
     }, 1000);
   });
 
-  const dispatch = useDispatch()
+ 
 
   useEffect(()=>{
       dispatch(fetchUsers())
@@ -33,8 +34,8 @@ const UserTable = () => {
    <br/>
   
 
-     <div class="container mt-5">
-     <table
+   <div class="container mt-5">
+        <table
           id="example"
           class="display table table-bordered table-hover table-striped"
         >
@@ -47,6 +48,7 @@ const UserTable = () => {
                         <th>Username</th>
                         <th>Password</th>
                         <th>ProgramName</th>
+                        <th>Actions</th>
                        
                     </tr>
                 </thead>

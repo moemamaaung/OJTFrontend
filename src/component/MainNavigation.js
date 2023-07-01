@@ -28,6 +28,7 @@ const MainNavigation = () => {
 					  <li class="nav-item"><Link to='/teacher' class={text} >Teachers</Link></li>
 						<li class="nav-item"><Link to='/program-fee'  class={text} >Program</Link></li>
 						<li class="nav-item"><Link to='/contact' class={text}>Contact</Link></li>
+						
 					<Link to='/login' className={login} type="button">Login</Link>
 					</ul>
          

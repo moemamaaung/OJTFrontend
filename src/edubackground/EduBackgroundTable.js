@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import EduBackgroundList from './EduBackgroundList'
+import { useDispatch } from 'react-redux'
+import { fetchEdus } from './edubackgroundSlice'
 
 const EduBackgroundTable = () => {
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+      dispatch(fetchEdus())
+  },[dispatch])
+
   return (
     <div className="container-fluid">
       <div className="card-body">

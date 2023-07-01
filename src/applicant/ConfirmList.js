@@ -29,8 +29,8 @@ const ConfirmList = () => {
             (confirm) => (
                 <ConfirmItem
                 id={confirm.id}
-                name={confirm.name}
-                email={confirm.email}
+                fullname={confirm.fullname}
+                username={confirm.username}
                 phno={confirm.phno}
                 gender={confirm.gender}
                 street={confirm.street}

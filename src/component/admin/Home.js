@@ -107,10 +107,12 @@ const Home = () => {
                             <Link to="/admin/academicyear" className="collapse-item" >AcademicYears</Link>
                             <Link to="/admin/program" className="collapse-item" >Programs</Link>
                             <Link to="/admin/userList" className="collapse-item" >Students</Link>
-                            <Link to="/admin" className="collapse-item" >Courses</Link>
+                            <Link to="/admin/confirm" className="collapse-item" >ConfirmList</Link>
+                            <Link to="/admin/courseTable" className="collapse-item" >Courses</Link>
                             <Link to="/admin/examTable" className="collapse-item" >Exams</Link>
                             <Link to="/admin/markTable" className="collapse-item" >Marks</Link>
                             <Link to="/admin/timetable" className="collapse-item" >Times</Link>
+                            <Link to="/admin/confirm" className="collapse-item" >ConfirmTable</Link>
                            
                            
 

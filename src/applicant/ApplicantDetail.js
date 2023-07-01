@@ -14,7 +14,7 @@ const ApplicantDetail = () => {
   return (
     <div className={classes.all}>
       <div className={classes.wrapper}>
-        <h2>{applicant.name}</h2>
+        <h2>{applicant.fullname}</h2>
         <div className={classes.row}>
           <div className={classes.col}>
 

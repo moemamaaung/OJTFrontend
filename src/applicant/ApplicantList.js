@@ -30,8 +30,8 @@ const ApplicantList = () => {
             (applicant) => (
                 <ApplicantItem
                 id={applicant.id}
-                name={applicant.name}
-                email={applicant.email}
+                fullname={applicant.fullname}
+                username={applicant.username}
                 phno={applicant.phno}
                 gender={applicant.gender}
                 edu={applicant.edu}

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { selectUserById } from '../features/user/userSlice';
 import { selectProgramById } from '../program/programSlices';
+import { Link } from 'react-router-dom';
 
 const UserItem = (props) => {
  
@@ -18,6 +19,7 @@ const UserItem = (props) => {
         <td>{props.username}</td>
         <td>{props.password}</td>
         <td>{props.program?.programName}</td> 
+        <td><Link to='/admin/email'>Send</Link></td>
        
        
    

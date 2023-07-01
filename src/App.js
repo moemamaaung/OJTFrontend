@@ -50,12 +50,9 @@ import ProgramForm from "./component/program/ProgramForm";
 import MList from "./component/student/mark/MList";
 import CreateProgramForm from "./component/program/CreateProgramForm";
 import TestingProgramForm from "./component/program/TestingProgramForm";
-
-
-
-
-
-
+import ConfirmTable from "./applicant/ConfirmTable";
+import MarkList from "./component/mark/MarkList";
+import EmailSendForm from "./email/EmailSendForm";
 
 function App() {
   return (
@@ -63,8 +60,8 @@ function App() {
           <Route element={<ProtectedRoute allowedRoles={['ROLE_ADMIN']} />} >
 
             <Route path="/admin" element={<Home />} >
-            <Route path="/admin" element={<CourseTable />} />
-            <Route path="/admin/register" element={<Register />} />
+            <Route path="/admin" element={<DaskBoard/>} />
+            <Route path="/admin/register/:confirmId" element={<Register />} />
             <Route path="/admin/userList" element={<UserTable />} />
 
             <Route path="/admin/academicyear" element={<AcademicYear />} />
@@ -79,12 +76,11 @@ function App() {
               <Route path="/admin/createTime" element={<CreatTime />} />
               <Route path="/admin/time/edit/:timeId" element={<UpdateTimeForm />} />
 
-              {/* <Route path="/admin/courseTable" element={<CourseTable />} /> */}
+
+              <Route path="/admin/courseTable" element={<CourseTable />} />
               <Route path="/admin/createCourse" element={<CreateCourseForm />} />
               <Route path="/admin/course/update/:courseId" element={<UpdateCourseForm />} />
 
-             
-             
               <Route path="/admin/examTable" element={<ExamTable />} />
               <Route path="/admin/createExam" element={<CreateExamForm />} />
               <Route path="/admin/exam/update/:examId" element={<UpdateExamForm />} />
@@ -97,6 +93,10 @@ function App() {
               <Route path="/admin/alledu" element={<EduBackgroundTable />} />
               <Route path="/admin/allexp" element={<ExpTable />} />
               <Route path="/admin/all/:applicantId" element={<ApplicantDetail />} />
+
+              <Route path="/admin/confirm" element={<ConfirmTable />} />
+
+              <Route path="/admin/email" element={<EmailSendForm />} />
             
               </Route>
               
@@ -133,14 +133,11 @@ function App() {
             <Route path="/allexp" element={<ExpTable />} />
 
           
-          <Route path="/add" element={<AddNewApplicantForm/>} />
+          <Route path="/applicantForm" element={<AddNewApplicantForm/>} />
           <Route path="/viewapp" element={<ViewApplicant />}/>
+          <Route path="/newedu" element={<AddNewEdu />} />
 
-         
-          <Route path="/newedu/:applicantId" element={<AddNewEdu />} />
-
-          
-          <Route path="/newexp/:applicantId" element={<AddNewExp />} />
+          <Route path="/newexp" element={<AddNewExp />} />
           </Route>
           
 

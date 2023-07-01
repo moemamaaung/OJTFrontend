@@ -10,6 +10,7 @@ const CourseList = () => {
   const courseStatus = useSelector(getCourseStatus);
   const courseError = useSelector(getCourseError);
 
+  console.log(courseStatus)
   useEffect(() => {
     if (courseStatus === "idle") {
       dispatch(fetchCourses());
@@ -26,7 +27,7 @@ const CourseList = () => {
     
     content = courses.map((course) => (
       <Items
-        id={course.id}
+         id={course.id}
         subject1={course.subject1}
         subject2={course.subject2}
         subject3={course.subject3}

@@ -1,14 +1,15 @@
 import { useDispatch } from 'react-redux'
-import { deleteApplicant } from './applicantSlice'
+import { confirmApplicant, deleteApplicant } from './applicantSlice'
 import ConfirmModal from '../component/utility/ConfirmModal'
 import Backdrop from '../component/utility/BackDrop'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ApplicantItem = (props) => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
 
   function deleteHandler() {
@@ -46,6 +47,7 @@ const ApplicantItem = (props) => {
       }
       
       )).unwrap()
+      navigate(`/admin/confirm`)
 
     setModalOpen(false)
   }
@@ -55,11 +57,11 @@ const ApplicantItem = (props) => {
   return (
     <tr>
       <td>{props.id}</td>
-      <td>{props.name}</td>
-      <td>{props.email}</td>
+      <td>{props.fullname}</td>
+      <td>{props.username}</td>
       <td>{props.phno}</td>
       <td>{props.gender}</td>
-      <td>{String(props.edu.education)}</td>
+      <td>{String(props?.edu.education)}</td>
       <td>{props.edu.degree}</td>
       <td>{props.edu.university}</td>
       {/* <td>{props.startDate}</td>
@@ -74,7 +76,7 @@ const ApplicantItem = (props) => {
          
        
 
-         <Link to={`/register/${props.id}`}><button onClick={insertConfirmHandler}>
+         <Link to={`/admin/register/${props.id}`}><button onClick={insertConfirmHandler}>
            Confirm
         </button></Link>
         
