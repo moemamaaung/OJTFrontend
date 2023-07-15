@@ -34,13 +34,13 @@ const ExamItems = (props) => {
         <Link
           to={`/exam/update/${props.id}`}
           type="button"
-          className="btn btn-primary"
+          
         >
-          Update
+        <i class="far fa-edit fa-lg"></i>
         </Link>
         &nbsp;&nbsp;&nbsp;
-        <Link onClick={deleteHandler} type="button" className="btn btn-danger">
-          Delete
+        <Link onClick={deleteHandler} type="button" >
+        <i class="ms-3 fas fa-trash fa-lg"></i>
         </Link>
       </td>
       {isModalOpen && 

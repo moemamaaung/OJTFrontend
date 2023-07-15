@@ -1,16 +1,11 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
+import { getTimeError, getTimeStatus,  selectProgramTimetableById } from "../time/timeSlice";
 
-import { useEffect } from "react";
-import { fetchTime, getTimeError, getTimeStatus, selectAllTimes, selectProgramTimetableById } from "../time/timeSlice";
-import { fetchPrograms } from "../program/programSlices";
 import TimetableItem from "./TimetableItem";
-import { useNavigate } from "react-router-dom";
 
-function TimetableList(props) {
-    const dispatch = useDispatch();
 
-    // const timetables = useSelector(selectAllTimes);
-    // console.log("timetableList" + timetables)
+function TimetableList() {
+
     const timetableStatus = useSelector(getTimeStatus)
     const timetableError = useSelector(getTimeError)
 
@@ -21,13 +16,6 @@ function TimetableList(props) {
     console.log("In the user profile Form id is :" + pId);
 
 
-    useEffect(() => {
-        if (timetableStatus === 'idle') {
-            dispatch(fetchTime())
-            dispatch(fetchPrograms())
-
-        }
-    }, [timetableStatus, dispatch])
 
     const time = useSelector((state) => selectProgramTimetableById(state, Number(pId)))
 
@@ -39,7 +27,6 @@ function TimetableList(props) {
 
     if (timetableStatus === 'succeeded') {
         content = <TimetableItem
-            // id={time.id}
             subk={time.subk}
             subject={time.subject}
             subName={time.subName}
@@ -73,8 +60,6 @@ function TimetableList(props) {
     }
     console.log("TimetableList" + timetableStatus)
 
-    const navigate = useNavigate()
-    navigate(`/student/timetable`)
     return content;
 }
 

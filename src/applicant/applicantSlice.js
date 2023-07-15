@@ -9,7 +9,7 @@ const POST_NEW_CONFIRM_APPLICANT ='http://localhost:8585/api/confirm/create'
 // export const addNewApplicant = createAsyncThunk('applicants/addNewApplicant',async (data)=>{
 //     console.log("Hello data "+data)
 //     console.log("Program Id in AddNew Applicant"+data.PROGRAM_ID)
-//     await axios.post(`${POST_NEW_APPLICANTES}${data.PROGRAM_ID}`)
+//     await axios.post(`${POST_NEW_APPLICANTES}${data.PROGRAM_ID}`,data)
 //     // await axios.post(POST_NEW_APPLICANTES)
 //     await axios.get(GET_ALL_APPLICANTS)
 //     const response = await axios.get(GET_ALL_APPLICANTS)
@@ -32,9 +32,6 @@ export const fetchApplicants = createAsyncThunk('applicants/fetchApplicants', as
 })
 
 
-
-
-
 export const deleteApplicant = createAsyncThunk('applicants/deleteApplicant', async (id) => {
     const response = await axios.delete(`${DELETE_APPLICANT}${id}`);
     return response.data
@@ -51,12 +48,22 @@ export const confirmApplicant = createAsyncThunk('applicants/deleteApplicant', a
 const initialState = {
     applicants: {},
     status: 'idle',
+    addEdu : false,
+    addExp : false,
     error: null
 }
 export const applicantSlice = createSlice({
     name: 'applicants',
     initialState,
-            reducers:{},
+            reducers:{
+                setEdu : (state,action)=>{
+                    state.addEdu = action.payload
+
+                },
+                setExp : (state,action)=>{
+                    state.addExp = action.payload
+                }
+            },
    
     extraReducers(builder) {
         builder
@@ -101,6 +108,9 @@ export const getApplicantError = (state) => state.applicants.error
 
 
 export const selectApplicantById = (state, applicantId) => state.applicants.applicants.find(applicant => applicant.id === applicantId)
-export const { addApplicant } = applicantSlice.actions
+
+export const { addApplicant,setEdu,setExp } = applicantSlice.actions
+export const getEduInApp = (state)=> state.applicants.addEdu
+export const getExpInApp = (state) => state.applicants.addExp
 
 export default applicantSlice.reducer

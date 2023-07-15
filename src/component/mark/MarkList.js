@@ -6,12 +6,7 @@ import { useLocation } from "react-router-dom";
 import { selectUserById } from "../features/user/userSlice";
 
 const MarkList = () => {
-  // const locatin = useLocation();
-  // const { fullname } =locatin.state;
-  // console.log(fullname)
-
-  // const user = useSelector((state)=>selectUserById(state,Number(userId)));
-  // console.log(user)
+ 
 
     const marks = useSelector(selectAllMarks);
     const markStatus = useSelector(getMarkStatus);
@@ -48,7 +43,7 @@ const MarkList = () => {
                 program = {mark.course.program}
                 course = {mark.course}
                 fullname = {mark.fullname}
-                
+                username = {mark.username}
             />
         ))
       }

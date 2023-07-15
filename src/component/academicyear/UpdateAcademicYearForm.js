@@ -51,7 +51,7 @@ const UpdateAcademicYearForm = () => {
           setId('')
     setAcademicyear('')
 
-      navigate(`/academicyear`)
+      navigate(`/admin/academicyear`)
          }
          console.log(canSave)
       

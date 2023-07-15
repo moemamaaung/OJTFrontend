@@ -10,14 +10,7 @@ const Items = (props) => {
 
   const dispatch = useDispatch()
 
-  // const programTId = props.programId
 
-  // console.log("ProgramId is  "+programTId)
-
-  
-  // const programs = useSelector((state)=>selectProgramById(state,Number(programTId)))
-
-  // console.log("Programs   is"+program)
 
   const [isModalOpen,setModalOpen] = useState(false)
 
@@ -57,7 +50,7 @@ function confirmHandler(){
       </td>
     
      {isModalOpen && <ConfirmModal onCancel={cancelHandler} onConfirm={confirmHandler}/>}
-     {isModalOpen && <BackDrop onBackdrop={backdropHandler}/>} 
+
      </tr>
   );
 };

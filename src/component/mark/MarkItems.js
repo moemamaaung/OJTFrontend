@@ -46,117 +46,24 @@ const MarkItems = (props) => {
 
   return (
 
-     
-    <div class="container mt-5">
+
    
-            <div className={classes.wrapper}>
+    <tr>
+    <td>{props.id}</td>
+      <td>{props.fullname}</td>
+      <td>{props.program.programName}</td>
+      {/* <td>{props.exam.examType}</td> */}
+      <td><Link to={`/admin/mark/${props.id}`} style={{textDecoration : 'none'}}>View Scores </Link></td>
+      <td><Link to={`/admin/mark/edit/${props.id}`}><i class="far fa-edit fa-lg"></i></Link>
+      <Link onClick={deleteHandler}><i class="ms-3 fas fa-trash fa-lg"></i></Link>
+    </td>
+      
+        {isModalOpen && <ConfirmModal onCancel={cancelHandler} onConfirm={confirmHandler} />}
+      </tr>
+  
 
-            <div className={classes.col}>
-               
-               <div className={classes.inputGroup}>
-                           <div className={classes.inputBox}>
-                           <h4> Name : {props.fullname} </h4>
-                          
-                           </div>
-                      
-                       </div>
-                       </div>
+  
 
-            <div className={classes.col}>
-               
-                <div className={classes.inputGroup}>
-                            <div className={classes.inputBox}>
-                            <h4>Program Name : {props.program.programName} </h4>
-                           
-                            </div>
-                       
-                        </div>
-                        </div>
-
-                        <div className={classes.col}>
-              
-                <div className={classes.inputGroup}>
-                            <div className={classes.inputBox}>
-                     <h4>Exam Type : {props.exam.examType} </h4>
-
-                            </div>
-                        </div>
-                        </div>
-                       
-
-                      
-
-        <table class={t}>
-
-            <thead className={text}>
-                <tr>
-                    <th className='text-center'>Subject</th>
-                    <th className='text-center'>Scores</th>
-                </tr>
-            </thead>
-
-
-            <tbody>
-                <tr>
-                   <td className={p}>{props.course.subject1}</td>
-                    <td className={p}>{props.subject1Score}</td>
-                 </tr>
-                <tr>
-                   
-                    <td className={p}>{props.course.subject2}</td>
-                    <td className={p}>{props.subject2Score}</td>
-                    
-                </tr>
-                <tr>
-                    <td className={p}>{props.course.subject3}</td>
-                    <td className={p}>{props.subject3Score}</td>
-                   </tr>
-                <tr>
-                   <td className={p}>{props.course.subject4}</td>
-                    <td className={p}>{props.subject4Score}</td>
-                    </tr>
-                <tr>
-                   
-                    <td className={p}>{props.course.subject5}</td>
-                    <td className={p}>{props.subject5Score}</td>
-                  
-                </tr>
-
-                <tr>
-                   
-                   <td className={p}>{props.course.subject6}</td>
-                   <td className={p}>{props.subject6Score}</td>
-                 
-               </tr>
-
-               <tr>
-                   
-                   <td className='text-center font-weight-bold' >Total</td>
-                   <td className='text-center'>{calculateSum()}</td>
-                 
-               </tr>
-            </tbody>
-
-        </table>
-            <Link
-          to={`/mark/update/${props.id}`}
-          type="button"
-          
-        >
-        <i class="far fa-edit fa-lg"></i>
-        </Link>
-
-        &nbsp;&nbsp;&nbsp;
-        <Link
-          onClick={deleteHandler}
-          type="button">
-          <i class="ms-3 fas fa-trash fa-lg"></i>
-        </Link>
-       
-            {isModalOpen && <ConfirmModal onCancel={cancelHandler} onConfirm={confirmHandler} />}
-   
-            </div>
-        </div>
 
    
   );

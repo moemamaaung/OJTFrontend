@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import classes from "./CreateMarkForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addNewMarks } from "./markSlice";
+import { addNewMarks, fetchMarks } from "./markSlice";
 import { useLocation, useNavigate } from "react-router-dom";
-import { fetchCourses ,selectProgramCourseById } from "../course/courseSlice";
+import { fetchCourses ,selectAllCourses,selectProgramCourseById } from "../course/courseSlice";
 import { fecthExams, selectAllExams } from "../exam/examSlice";
 import { selectAllPrograms } from "../program/programSlices";
-import { getUser } from "../features/user/userSlice";
+import { fetchUsers, getUser } from "../features/user/userSlice";
 
 const CreateMarkForm = (props) => {
 
@@ -22,7 +22,7 @@ const CreateMarkForm = (props) => {
   const [subject5Score, setSubject5Score] = useState("");
   const [subject6Score, setSubject6Score] = useState("");
  
-  // const [programId, setProgramId] = useState("");
+  const [username,setUsername] = useState("");
   const [fullname,setFullname] = useState("");
   const [courseId, setCourseId] = useState("");
   const [examId, setExamId] = useState("");
@@ -35,23 +35,33 @@ const CreateMarkForm = (props) => {
   const onSubject4Change = (e) => setSubject4Score(e.target.value);
   const onSubject5Change = (e) => setSubject5Score(e.target.value);
   const onSubject6Change = (e) => setSubject6Score(e.target.value);
- //const onProgramIdChange = (e) => setProgramId(e.target.value);
+ const onUsernameChange = (e) => setUsername(e.target.value);
   const onFullnameChange = (e) => setFullname(e.target.value);
   const onCourseIdChange = (e) => setCourseId(e.target.value);
 
   const onExamIdChange = (e) => setExamId(e.target.value);
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fecthExams());
+    dispatch(fetchMarks());
+    dispatch(fetchUsers());
+    dispatch(fetchCourses());
+
+  }, [dispatch]);
 
   const exams = useSelector(selectAllExams);
   const programs = useSelector(selectAllPrograms)
   const users = useSelector(getUser)
-  console.log(users)
+  const course = useSelector(selectAllCourses)
+  console.log(course)
+
 
   const cid = courseId
+
   console.log(cid)
  
-  const courses1 = useSelector((state) => selectProgramCourseById(state, Number(cid)))
+  const courses1 = useSelector((state) => selectProgramCourseById(state,Number(courseId)))
 
   console.log(courses1)
 
@@ -61,8 +71,8 @@ const CreateMarkForm = (props) => {
     fecthExams()
   }, []);
 
-  const canSave = [subject1Score, subject2Score, subject3Score, subject4Score, subject5Score, subject6Score].every(Boolean) && addRequestStatus === "idle";
-
+  const canSave = [subject1Score,courseId,examId, subject2Score, subject3Score, subject4Score, subject5Score, subject6Score,username,fullname].every(Boolean) && addRequestStatus === "idle";
+console.log(canSave)
   const onSubmit = (event) => {
     event.preventDefault();
 
@@ -73,7 +83,7 @@ const CreateMarkForm = (props) => {
         dispatch(
           addNewMarks({
             mark: {
-              subject1Score, subject2Score,fullname, subject3Score, subject4Score, subject5Score, subject6Score
+              subject1Score, subject2Score,fullname,username, subject3Score, subject4Score, subject5Score, subject6Score
             },
             courseId, examId
           })
@@ -120,6 +130,33 @@ const CreateMarkForm = (props) => {
                           {users.map((user) => (
                             <option >
                               {user?.fullname}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <div className={classes.inputGroup}>
+                  <div className={classes.inputBox}>
+                    <div className="row">
+                      <div className="col md-6">
+
+                        <label>Username :</label>
+                      </div>
+                      <div className="col md-6">
+                        <select
+                          className={classes.name}
+                          value={username}
+                          onChange={onUsernameChange}
+                        >
+                          <option value="">Choose Username </option>
+                          {users.map((user) => (
+                            <option >
+                              {user?.username}
                             </option>
                           ))}
                         </select>

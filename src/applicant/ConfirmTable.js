@@ -49,6 +49,7 @@ const ConfirmTable = () => {
                 <th>Education</th>
                 <th>Degree</th>
                 <th>University</th>
+                <th>ProgramId</th>
               </tr>
             </thead>
             <tbody>
@@ -64,6 +65,7 @@ const ConfirmTable = () => {
                 <th>Education</th>
                 <th>Degree</th>
                 <th>University</th>
+                <th>ProgramId</th>
                
               </tr>
             </tfoot>

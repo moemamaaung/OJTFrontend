@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom'
+import React from 'react'
 import classes from './TeacherItem.module.css'
-
-
+import { Link } from 'react-router-dom'
 const TeacherItem = (props) => {
-    return (
-        <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.3s">
+  return (
+    <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.3s">
 
             <div className={classes.ourteam}>
                 <div className={classes.teamimg}>
-                    <Link to={`/${props.id}`}><img src={props.image} />
+                    <Link to={`/${props.id}`}><img src={props.profile} />
                         <div class={classes.social}>
                             <ul>
 
@@ -23,12 +22,12 @@ const TeacherItem = (props) => {
                 <div class={classes.teamcontent}>
 
                     <h3 class="title">{props.name}</h3>
-                    <span class="post">{props.subject}</span>
+                    <span class="post">{props.qualification}</span>
                 </div>
             </div>
 
         </div>
-    )
+  )
 }
 
 export default TeacherItem

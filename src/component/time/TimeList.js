@@ -1,18 +1,16 @@
 import { useDispatch,useSelector } from "react-redux"
-
 import { useEffect } from "react";
 import TimeItem from "./TimeItem";
 import { fetchTime, getTimeError, getTimeStatus, selectAllTimes } from "./timeSlice";
 import { fetchPrograms } from "../program/programSlices";
 
+
 function TimeList () {
     const dispatch = useDispatch();
 
-    
-   
-
     useEffect(()=>{
         dispatch(fetchTime())
+     
     },[dispatch])
 
     const timetables = useSelector(selectAllTimes);

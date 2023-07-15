@@ -36,11 +36,9 @@ const AcademicYearItem = (props) => {
     <td><Link to={`/admin/academicyear/edit/${props.id}`}><i class="far fa-edit fa-lg"></i></Link>
       <Link onClick={deleteHandler}><i class="ms-3 fas fa-trash fa-lg"></i></Link>
     </td>
-    {/* <td><Link to={`/academicyear/edit/${props.id}`} type='button' className="btn btn-danger">Update</Link>
-        &nbsp;&nbsp;&nbsp;
-        <Link onClick={deleteHandler} type='button'   className="btn btn-primary">Delete</Link></td> */}
+  
         {isModalOpen && <ConfirmModal onCancel={cancelHandler} onConfirm={confirmHandler} />}
-        {isModalOpen && <BackDrop onBackdrop={backdropHandler}/>} 
+        {/* {isModalOpen && <BackDrop onBackdrop={backdropHandler}/>}  */}
      
  </tr>
   )

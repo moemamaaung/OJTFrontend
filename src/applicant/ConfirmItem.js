@@ -11,6 +11,7 @@ const ConfirmItem = (props) => {
       <td>{props.street}</td>
       <td>{props.township}</td>
       <td>{props.city}</td>
+     
       
     </tr>
   );

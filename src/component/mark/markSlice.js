@@ -23,7 +23,7 @@ export const addNewMarks = createAsyncThunk(
 export const updateMarks = createAsyncThunk(
   "marks/updateMarks",
   async (data) => {
-    const response = await axios.patch(`${UPDATE_MARK}${data.courseId}/${data.examId}`, data.mark);
+    const response = await axios.patch(`${UPDATE_MARK}${data.courseId}`, data.mark);
     return response.data;
   }
 );
@@ -109,7 +109,7 @@ export const getMarkError = (state) => state.marks.error;
 export const selectMarkById = (state, markId) =>
 state.marks.marks.find((mark) => mark.id === markId);
 
-export const selectUserMarkById = (state,markId) => state.marks.marks.find(mark => mark.exam.id === markId)
+export const selectUserMarkById = (state,username) => state.marks.marks.find(mark => mark.username === username)
 
 export const { addMark } = markSlice.actions;
 export default markSlice.reducer;

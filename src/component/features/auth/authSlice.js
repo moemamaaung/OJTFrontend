@@ -10,21 +10,18 @@ const LOGIN_URL = `${base_url}/user/login`
 export const login = createAsyncThunk('auths/login',async (loginRequest) => {
     console.log(loginRequest)
 
-    try {
         const response = await axios.post(LOGIN_URL,loginRequest)
         return response.data
-    } catch (error) {
-        console.error(error)
-    }
+ 
 })
 
 
 
 const initialState = {
-    user:{},
+    user:[],
     roles:[],
-    success:false,
     token:'',
+    loginStatus:'idle'
 }
 
 const authSlice = createSlice({
@@ -34,7 +31,7 @@ const authSlice = createSlice({
         logout : (state) => {
             state.user = {}
             state.roles = []
-            state.success = false
+            state.loginStatus = 'idle'
             state.token = ''
             localStorage.clear()
         },
@@ -54,12 +51,13 @@ const authSlice = createSlice({
                 if(action.payload?.token){
                     state.user = action.payload.user
                     state.roles = action.payload.roleList
-                    state.success = action.payload.success
+                    state.loginStatus = Boolean(action.payload.success) ? 'success' : 'failed'
                     state.token = action.payload.token
                     localStorage.setItem('token',action.payload.token)
                
                 }else{
                     console.log('login fail!')
+                    state.loginStatus = 'failed'
                 }
             })
     }
@@ -68,6 +66,7 @@ const authSlice = createSlice({
 export const getUser = state => state.auths.user
 export const getRoles = state => state.auths.roles
 
+export const getLoginStatus = state => state.auths.loginStatus
 export const getUserMarkByFullname = (state,markId) => state.auths.user.find(user => user.mark.id === markId)
 
 export const getSuccess = state => state.auths.success

@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectProgramById, selectTimeById } from '../time/timeSlice'
-import { fetchPrograms, selectAllPrograms } from '../program/programSlices'
-import TimeList from '../time/TimeList'
-import TimetableList from './TimetableList'
+import React, { useEffect } from "react";
+import TimetableList from "./TimetableList";
+import { useDispatch } from "react-redux";
+import { fetchTime } from "../time/timeSlice";
 
-const Timetable = (props) => {
+const Timetable = () => {
+  const dispatch = useDispatch();
+  
 
+  useEffect(() => {
+    dispatch(fetchTime());
+  }, [dispatch]);
 
   return (
-    
-    <div >
-    <TimetableList />
-   
-    
+    <div>
+      <TimetableList />
     </div>
-  )
-}
+  );
+};
 
-export default Timetable
+export default Timetable;

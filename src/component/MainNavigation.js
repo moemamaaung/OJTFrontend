@@ -15,7 +15,7 @@ const MainNavigation = () => {
 <header class="top-navbar">
 		<nav class={navbg}>
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand">
 					<img src={logo} alt="" />
 				</a>
         <button className="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">

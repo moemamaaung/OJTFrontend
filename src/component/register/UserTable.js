@@ -1,68 +1,68 @@
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-import { useDispatch } from "react-redux"
-import { useEffect } from "react"
-import classes from '../Abouts.module.css'
-import { fetchUsers } from "../features/user/userSlice"
-import UserList from "./UserList"
-import $ from 'jquery'
+import { fetchUsers } from "../features/user/userSlice";
+import UserList from "./UserList";
+import $ from "jquery";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 
-
 const UserTable = () => {
-  const dispatch = useDispatch()
-  
   $(document).ready(function () {
     setTimeout(function () {
       $("#example").DataTable();
     }, 1000);
   });
 
- 
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-      dispatch(fetchUsers())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
   return (
-    <div>      
-
-    <h1 class="m-0  font-weight-bold text-secondary text-center">Student List</h1>
-   <br/>
-   <br/>
-  
-
-   <div class="container mt-5">
+    <div className="MainDiv">
+      <div class="text-center">
+        <h1 class="m-0  font-weight-bold text-secondary text-center">
+          User List
+        </h1>
+      </div>
+      <div className="container">
+        <br />
+        <br />
         <table
           id="example"
           class="display table table-bordered table-hover table-striped"
         >
-    <thead >
-                  <tr>
-                        
-                       <th>ID</th>
-                        
-                        <th>FullName</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>ProgramName</th>
-                        <th>Actions</th>
-                       
-                    </tr>
-                </thead>
-               
-               <tbody>
+          <thead>
+            <tr>
+            <th>ID</th>
+              <th>FullName</th>
+              <th>Email</th>
+              <th>ProgramName</th>
+              <th>Detail</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
 
-                <UserList />
+          <tbody>
+            <UserList />
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>FullName</th>
+              <th>Email</th>
+              <th>ProgramName</th>
+              <th>Detail</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  );
+};
 
-              </tbody>
-    </table>
-  </div>
-
-</div>
-  )
-}
-
-export default UserTable
+export default UserTable;

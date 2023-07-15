@@ -9,6 +9,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
+import { fetchPrograms } from "../program/programSlices";
+
 const CourseTable = () => {
   const dispatch = useDispatch();
   $(document).ready(function () {
@@ -19,12 +21,13 @@ const CourseTable = () => {
 
   useEffect(() => {
     dispatch(fetchCourses());
+    dispatch(fetchPrograms())
   }, [dispatch]);
 
   return (
     <div className="container-fluid">
    
-        {/* <h1 className="m-0  font-weight-bold text-primary text-center">Course List</h1> */}
+   <h1 class="m-0  font-weight-bold text-secondary text-center">Course List</h1>
         <br />
        
         <AddCreateButton />

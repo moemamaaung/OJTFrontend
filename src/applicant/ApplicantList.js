@@ -34,8 +34,13 @@ const ApplicantList = () => {
                 username={applicant.username}
                 phno={applicant.phno}
                 gender={applicant.gender}
+                street={applicant.street}
+                township={applicant.township}
+                city={applicant.city}
                 edu={applicant.edu}
                 exp={applicant.exp}
+                program = {applicant.program}
+                />
                
             //    startDate={applicant.edu.startDate}
             //    endDate={applicant.edu.endDate}
@@ -43,7 +48,6 @@ const ApplicantList = () => {
             //     township={applicant.township}
             //     city={applicant.city}
             //     gender={applicant.gender}
-                />
                 
             )
         )

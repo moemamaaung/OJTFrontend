@@ -28,7 +28,7 @@ const ExamTable = () => {
     return (
         <div className="container-fluid">
           <div className="card-body">
-            <h1 className="m-0  font-weight-bold text-primary">Exam List</h1>
+          <h1 class="m-0  font-weight-bold text-secondary text-center">Exam List</h1>
             <br />
             <br />
             {/* <Link to="/admin/createExam" >

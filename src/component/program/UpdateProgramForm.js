@@ -125,7 +125,7 @@ const UpdateProgramForm = () => {
                                             {academicyears.map((p) =>
 
                                                 <option key={p.id} value={p.id}>
-                                                    {p.name}
+                                                    {p.value}
                                                 </option>
 
                                             )};

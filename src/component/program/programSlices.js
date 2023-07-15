@@ -21,7 +21,7 @@ export const fetchPrograms= createAsyncThunk('programs/fetchPrograms', async () 
 
 
 export const updateProgram= createAsyncThunk('programs/updateProgram',async (data) => {
-    const response = await axios.patch(`${UPDATE_Program}${data.selectedYears}`,data)
+    const response = await axios.patch(`${UPDATE_Program}${data.ACADEMICYEAR_ID}`,data)
     return response.data;
  })
 

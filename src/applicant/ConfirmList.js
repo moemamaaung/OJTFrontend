@@ -36,6 +36,7 @@ const ConfirmList = () => {
                 street={confirm.street}
                 township={confirm.township}
                 city={confirm.city}
+                
                 />
                 
             )

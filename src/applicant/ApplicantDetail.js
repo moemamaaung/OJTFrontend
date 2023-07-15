@@ -1,24 +1,33 @@
-import { useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { selectApplicantById } from './applicantSlice'
-import classes from './ApplicantDetail.module.css'
+import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { selectApplicantById } from "./applicantSlice";
+import classes from "./ApplicantDetail.module.css";
 
 const ApplicantDetail = () => {
+  const { applicantId } = useParams();
+  console.log(applicantId);
+  const applicant = useSelector((state) =>
+    selectApplicantById(state, Number(applicantId))
+  );
+  console.log(applicant);
 
-  const { applicantId } = useParams()
-  console.log(applicantId)
-  const applicant = useSelector((state) => selectApplicantById(state, Number(applicantId)))
-  console.log(applicant)
-
-  console.log(applicant.edu.startDate)
+  console.log(applicant.edu.startDate);
   return (
     <div className={classes.all}>
       <div className={classes.wrapper}>
         <h2>{applicant.fullname}</h2>
         <div className={classes.row}>
           <div className={classes.col}>
-
             <div className={classes.col}>
+            <div className={classes.inputGroup}>
+                University : {applicant.edu.education}
+              </div>
+              <div className={classes.inputGroup}>
+                University : {applicant.edu.degree}
+              </div>
+              <div className={classes.inputGroup}>
+                University : {applicant.edu.university}
+              </div>
               <div className={classes.inputGroup}>
                 University StartDate : {applicant.edu.startDate}
               </div>
@@ -42,9 +51,7 @@ const ApplicantDetail = () => {
               </div>
 
               <div className={classes.inputGroup}>
-                <div className={classes.inputBox}>
-                  City : {applicant.city}
-                </div>
+                <div className={classes.inputBox}>City : {applicant.city}</div>
               </div>
 
               <div className={classes.inputGroup}>
@@ -70,23 +77,22 @@ const ApplicantDetail = () => {
                   Job EndDate : {applicant.exp.endDate}
                 </div>
               </div>
-
             </div>
 
             <div className={classes.inputGroup}>
               <div className={classes.inputBox}>
                 <button type="submit" className={classes.btn}>
-                  <Link to="/admin/all">Back</Link>
+                  <Link to="/admin/all" style={{ textDecoration: "none" }}>
+                    Back
+                  </Link>
                 </button>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ApplicantDetail
+export default ApplicantDetail;

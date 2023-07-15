@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import classes from "./EmailSendForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { sendEmail } from "./emailSlice";
 import { getToken } from "../component/features/auth/authSlice";
+import { selectUserById } from "../component/features/user/userSlice";
 
 const EmailSendForm = () => {
-  const [to, setTo] = useState("");
+  const { userId } =useParams()
+  console.log("UserId in email"+ userId)
+  const emailSentUser = useSelector((state) => selectUserById(state, Number(userId)))
+  console.log(emailSentUser)
+  const [to, setTo] = useState(emailSentUser.username);
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
   const token = useSelector(getToken)
@@ -15,7 +20,6 @@ const EmailSendForm = () => {
 
   const navigate = useNavigate();
   
-
   const onToChange = (e) => setTo(e.target.value);
   const onSubjectChange = (e) => setSubject(e.target.value);
   const onTextChange = (e) => setText(e.target.value);

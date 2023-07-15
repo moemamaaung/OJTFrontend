@@ -9,14 +9,16 @@ const ExpList = () => {
     const dispatch = useDispatch()
 
     const exps = useSelector(selectAllExps)
+    console.log(exps)
     const expStatus = useSelector(getExpStatus)
+    console.log(expStatus)
     const error = useSelector(getExpError)
 
     useEffect(()=>{
-        if(expStatus === 'idle'){
+      
             dispatch(fetchExps())
-        }
-    },[expStatus,dispatch])
+       
+    },[dispatch])
 
     let content;
 

@@ -1,202 +1,280 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-import { useNavigate, useParams } from 'react-router-dom';
-import { selectApplicantById } from '../../applicant/applicantSlice';
-import classes from '../login/Login.module.css'
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import classes from "../login/Login.module.css";
+import { updatePassword } from "../features/user/userSlice";
+import { logout } from "../features/auth/authSlice";
 
 const ProfileInfo = () => {
-    const p = `container emp-profile bg-light mt-5  ${classes.p}`
-
-    const loginUser  = useSelector( state => state.auths.user);
-  
-   console.log("Log in user: "+loginUser)
-   const userId = loginUser.id
-   console.log("In the user profile Form id is :"+userId);
-
-   const user = loginUser;
   
 
-   const [id,setId] = useState(user.id) 
-   const [fullname,setFullname] = useState(user.fullname)
-   const  [username,setUsername] =useState(user.username)
-  
-   
-   const [updateRequestStatus, setUpdatRequestStatus] = useState('idle')
+  const loginUser = useSelector((state) => state.auths.user);
+  console.log("Log in user: " + loginUser);
+  const userId = loginUser.id;
+  console.log("In the user profile Form id is :" + userId);
 
-    
-   const onNameChange = (e) => setFullname(e.target.value)
-   const onEmailChange = (e) => setUsername(e.target.value)
+  const user = loginUser;
 
-   const canSave = [id, fullname,username].every(Boolean) && updateRequestStatus === 'idle'
- 
-   const dispatch = useDispatch();
-   const navigate = useNavigate()
- 
-   const onSubmit = (event)=>{
-       event.preventDefault();
- 
-        
-          if(canSave){
-           try {
-            setUpdatRequestStatus('pending')
-               console.log("In the can save")
- 
-               dispatch(
-                
-                  
-               )
-           }
+  const [id] = useState(user.id);
+  const [fullname] = useState(user.fullname);
+  const [username] = useState(user.username);
+  const [password, setPassword] = useState(user.password);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [gender] = useState(user.gender);
+  const [phno] = useState(user.phno);
+  const [street] = useState(user.street);
+  const [township] = useState(user.township);
+  const [city] = useState(user.city);
+  const [passwordError, setPasswordError] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+  const [updateRequestStatus, setUpdatRequestStatus] = useState("idle");
+
+
+  const onPasswordChange = (e) => setPassword(e.target.value);
+  const onConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+
+  const canUpdate =
+    [
+      id,
+      password,
+    ].every(Boolean) && updateRequestStatus === "idle";
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onPasswordSubmit = (event) => {
+    event.preventDefault();
+
+    if (canUpdate) {
+      try {
+        console.log("If can update,...");
+        setUpdatRequestStatus("pending");
+        if (confirmPassword !== password) {
+          setPasswordError({
+            confirmPassword:
+              "new password and confirm password must be same!",
+          });
+          return;
+        }
+
+        if (!password) {
+          setPasswordError({
+            password: "Password should not be empty",
+          });
+        }
+        dispatch(
+          updatePassword({
+            user: {
+              id,
+              gender,
+              fullname,
+              username,
+              phno,
+              street,
+              township,
+              city,
+              password,
+            },
+          })
+        ).unwrap();
+        dispatch(logout());
        
-            catch (error) {
-               console.log(error)
-               
-           }finally{
-               setUpdatRequestStatus('idle')
-           }
- 
-      
- 
-          }
-          console.log(canSave)
-       
-       }
+        setPassword("")
+
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setUpdatRequestStatus("idle");
+      }
+    }
+    console.log(canUpdate);
+  };
 
   return (
-
-   
-
-    <div className={p}>
-   
-    <form onSubmit={onSubmit} className=''>
+    <div className={classes.m1}>
+    <div className={classes.all}>
+      <div className={classes.wrapper}>
         <div className="row">
-            
-            <div className="col-md-6">
-                <div className="profile-head">
-                            <h5>
-                                Kshiti Ghelani
-                            </h5>
-                            <h6>
-                                Web Developer and Designer
-                            </h6>
-                            <p className="proile-rating text-black">RANKINGS : <span>8/10</span></p>
-                    <ul className="nav nav-tabs" id="myTab" role="tablist">
-                        <li className="nav-item">
-                            <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
-                        </li>
-                    </ul>
-                </div>
+          <div className="col-md-6">
+            <div className="profile-head">
+              <h1 className="text-center mb-5 mt-3">Profile</h1>
+
+              <ul className="nav nav-tabs" id="myTab" role="tablist">
+                <li className="nav-item">
+                  <a
+                    className="nav-link active"
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="#home"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
+                    About
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Change Password
+                  </a>
+                </li>
+              </ul>
             </div>
-            {/* <div className="col-md-2">
-                <input type="submit" className="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-            </div> */}
+          </div>
         </div>
         <div className="row">
-           
-            <div className="col-md-8">
-                <div className="tab-content profile-tab" id="myTabContent">
-                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>User Id</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>Kshiti123</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Name</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        {/* <p className='text-black'>Kshiti Ghelani</p> */}
-                                        <input type='text' value={fullname} onChange={onNameChange} />
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Email</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        {/* <p className='text-black'>kshitighelani@gmail.com</p> */}
-                                        <input type='text' value={username} onChange={onEmailChange} />
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Phone</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>123 456 7890</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Profession</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>Web Developer and Designer</p>
-                                    </div>
-                                </div>
-                    </div>
-                    <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Experience</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p>Expert</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Hourly Rate</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>10$/hr</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Total Projects</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>230</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>English Level</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>Expert</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <label>Availability</label>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className='text-black'>6 months</p>
-                                    </div>
-                                </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <label>Your Bio</label><br/>
-                                <p className='text-black'>Your detail description</p>
-                            </div>
-                        </div>
-                    </div>
+          <div className="col-md-8">
+            <div className="tab-content profile-tab" id="myTabContent">
+              <div
+                className="tab-pane fade show active"
+                id="home"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>Name</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{fullname}</p>
+                  </div>
+                  
                 </div>
-            </div>
-        </div>
-    </form>           
-</div>
-  )
-}
+                
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>Username</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{username}</p>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>Gender</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{gender}</p>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>Phno</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{phno}</p>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>Street</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{street}</p>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>Township</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{township}</p>
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-6">
+                    <label>City</label>
+                  </div>
+                  <div className="col-md-6">
+                    <p className="text-black">{city}</p>
+                  </div>
+                </div>
+              </div>
 
-export default ProfileInfo
+              <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+{/* 
+              <div className="row mt-5">
+                    <div class="col-md-6">
+                      <label class="form-label">Current password</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input
+                        type="password"
+                        class="form-control w-70"
+                        value={password}
+                      />
+                    </div>
+                    </div> */}
+                <form onSubmit={onPasswordSubmit}>
+                
+                    <div className="row mt-5">
+                      <div class="col-md-6">
+                        <label class="form-label">New password</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input
+                          type="password"
+                          class="form-control w-70"
+                          onChange={onPasswordChange}
+                        />
+                      </div>
+                    </div>
+
+                    <div class="row mt-5">
+                      <div class="col-md-6">
+                        <label class="form-label">Confirm Password</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input
+                          type="password"
+                          class="form-control w-70"
+                          value={confirmPassword}
+                          onChange={onConfirmPasswordChange}
+                        />
+                      </div>
+                    </div>
+                    <span value={passwordError} className="text-danger">
+                      {passwordError.confirmPassword}
+                    </span>
+
+                    <div class="text-center mt-5 w-60">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        onClick={onPasswordSubmit}
+                        disabled={!canUpdate}
+                        style={{ backgroundColor: "#29bfc2" }}
+                      >
+                        Save changes
+                      </button>
+                      &nbsp;
+                      <Link to="/student">
+                        <button type="button" class="btn btn-default btn-danger">
+                          Cancel
+                        </button>
+                      </Link>
+                    </div>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  );
+};
+
+export default ProfileInfo;

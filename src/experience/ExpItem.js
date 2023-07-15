@@ -3,6 +3,7 @@ import { deleteExp } from './experienceSlice'
 import { useDispatch } from 'react-redux'
 
 const ExpItem = (props) => {
+  console.log(props)
     const dispatch = useDispatch()
   return (
     <tr>
