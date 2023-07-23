@@ -1,20 +1,25 @@
 import { useDispatch } from 'react-redux'
-import { confirmApplicant, deleteApplicant } from './applicantSlice'
+import { confirmApplicant, deleteApplicant, updateApplicant } from './applicantSlice'
 import ConfirmModal from '../component/utility/ConfirmModal'
 import Backdrop from '../component/utility/BackDrop'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import classes from '../component/course/CreateCourseForm.module.css'
 
 
 const ApplicantItem = (props) => {
+  const b = `fw-bold text-success  ${classes.b}`
   const [isModalOpen, setModalOpen] = useState(false)
-  
+  const programId = props.program.id
+  const eduId = props.edu.id
+  console.log(eduId)
+  const expId = props.exp.id
+  console.log(expId)
+  console.log("Program Id"+programId)
+  console.log(props.status)
 
   const dispatch = useDispatch()
   
-
-
-
   function backdropHandler() {
     setModalOpen(false)
   }
@@ -29,24 +34,36 @@ const ApplicantItem = (props) => {
     setModalOpen(false)
   }
 
+
+  const funDisabled = () => {
+    if (props.status === 'Confirmed') {
+      return true
+    } else if (props.status === 'Confirm') {
+      return false
+    }
+  }
   
   function insertConfirmHandler(){
-    dispatch(confirmApplicant(
-      {
-        applicant:{
-          id:props.id,
-          fullname:props.fullname,        
-          username: props.username,
-          phno:props.phno,
-          street:props.street,
-          township:props.township,
-          city:props.city,
-          gender:props.gender
-        },
-        id:props.id
-      }
-      
-      )).unwrap()
+
+    dispatch(updateApplicant({
+      applicants: {
+        id:props.id,
+        fullname: props.fullname,
+        username: props.username,
+        phno: props.phno,
+        street: props.street,
+        township: props.township,
+        city: props.city,
+        gender: props.gender,
+        confirm:props.confirm
+
+
+      },programId,expId,eduId
+    }
+    
+  )
+
+  ).unwrap()
 
     setModalOpen(false)
   }
@@ -61,15 +78,15 @@ const ApplicantItem = (props) => {
       <td>{props.phno}</td>
       <td>{props.gender}</td>
       <td>{props.program.programName}</td>
-      <td><Link to={`/admin/all/${props.id}`} style={{textDecoration : 'none'}} className="fw-bold text-success">Detail</Link></td>
+      <td><Link to={`/admin/all/${props.id}`} style={{textDecoration : 'none'}} className="fw-bold text-success">View Details</Link></td>
 
       <td>
          
        
 
-         <Link to={`/admin/register/${props.id}`} style={{textDecoration : 'none'}} ><p className="fw-bold text-success" onClick={insertConfirmHandler}>
-           Confirm
-        </p></Link>
+         <Link to={`/admin/register/${props.id}`} style={{textDecoration : 'none'}} ><button  className={b} onClick={insertConfirmHandler} disabled={funDisabled()}>
+          {props.status}
+        </button></Link>
         
 
       </td> 

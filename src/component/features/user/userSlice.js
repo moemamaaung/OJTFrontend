@@ -30,6 +30,8 @@ export const updateUser = createAsyncThunk('users/updateUser',async(data) => {
 })
 
 export const updatePassword = createAsyncThunk('users/updatePassword',async(data)=>{
+    console.log(data)
+    console.log(data.programId)
     const response = await axios.patch(`${UPDATE_PASSWORD_URL}${data.programId}`,data.user)
     return response.data
 })

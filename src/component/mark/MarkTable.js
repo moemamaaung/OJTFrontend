@@ -24,9 +24,9 @@ const MarkTable = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fecthExams());
+    // dispatch(fecthExams());
     dispatch(fetchMarks());
-    dispatch(fetchUsers());
+    // dispatch(fetchUsers());
 
   }, [dispatch]);
 
@@ -46,6 +46,7 @@ const MarkTable = () => {
                         
                        <th>ID</th>
                         <th> StudentName</th>
+                        <td>Username</td>
                         <th>ProgramName</th>
                         {/* <th>ExamType</th> */}
                         <th>Mark</th>

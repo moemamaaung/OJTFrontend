@@ -5,22 +5,22 @@ const GET_ALL_APPLICANTS = 'http://localhost:8585/api/applicant/all'
 const POST_NEW_APPLICANTES = 'http://localhost:8585/api/applicant/create/'
 const DELETE_APPLICANT = 'http://localhost:8585/api/applicant/delete/'
 const POST_NEW_CONFIRM_APPLICANT ='http://localhost:8585/api/confirm/create'
-
-// export const addNewApplicant = createAsyncThunk('applicants/addNewApplicant',async (data)=>{
-//     console.log("Hello data "+data)
-//     console.log("Program Id in AddNew Applicant"+data.PROGRAM_ID)
-//     await axios.post(`${POST_NEW_APPLICANTES}${data.PROGRAM_ID}`,data)
-//     // await axios.post(POST_NEW_APPLICANTES)
-//     await axios.get(GET_ALL_APPLICANTS)
-//     const response = await axios.get(GET_ALL_APPLICANTS)
-//     return response.data
-// })
+const UPDATE_Applicant ='http://localhost:8585/api/applicant/update/'
 
 
 export const addNewApplicant = createAsyncThunk('applicants/addNewApplicant',async (data)=>{
     console.log("Hello data "+data)
     console.log("Program Id in AddNew Applicant"+data.PROGRAM_ID)
     const response = await axios.post(`${POST_NEW_APPLICANTES}${data.PROGRAM_ID}`,data)
+    
+ 
+    return response.data
+})
+
+export const updateApplicant = createAsyncThunk('applicants/updateApplicant',async (data)=>{
+    console.log("Hello data "+data)
+    console.log("Program Id in AddNew Applicant"+data.programId)
+    const response = await axios.patch(`${UPDATE_Applicant}${data.programId}/${data.eduId}/${data.expId}`,data.applicants)
     
  
     return response.data
@@ -84,9 +84,19 @@ export const applicantSlice = createSlice({
             .addCase(addNewApplicant.fulfilled,(state,action)=>{
                 state.status = 'succeeded'
                 state.applicants.push(action.payload)
+
             }).addCase(addNewApplicant.rejected,(state,action)=>{
                 state.status = 'failed'
                 state.error = action.error.message
+
+            })
+            .addCase(updateApplicant.fulfilled, (state, action) => {
+
+                const applicant = action.payload
+                const applicants = state.applicants.filter( b => b.id !== applicant.id)
+
+                state.applicants = [applicant, ...applicants]
+
 
             })
             .addCase(deleteApplicant.fulfilled, (state, action) => {

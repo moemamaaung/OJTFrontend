@@ -8,14 +8,19 @@ const LecturerItems = (props) => {
   return (
     <tr>
       <td>{props.id}</td>
-      <td><img src={props.profile} className="image fluid" width="150" height="150" /></td>
       <td>{props.name}</td>
+      <td><img src={props.profile} className="image fluid" width="150" height="150" /></td>
+     
+      {/* <td>{props.gender}</td>
       <td>{props.email}</td>
       <td>{props.phoneNo}</td>
       <td>{props.address}</td>
-      <td>{props.gender}</td>
+     
       <td>{props.age}</td>
-      <td>{props.qualification}</td>
+      <td>{props.qualification}</td> */}
+      <td><Link to={`/admin/lecturer/${props.id}`} style={{textDecoration : 'none'}} className="fw-bold text-success">View Details</Link></td>
+
+
       <td>
         
         <Link

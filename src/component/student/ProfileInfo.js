@@ -14,11 +14,14 @@ const ProfileInfo = () => {
   console.log("In the user profile Form id is :" + userId);
 
   const user = loginUser;
+  console.log(user)
 
+  const [programId] = useState(user.program.id)
   const [id] = useState(user.id);
   const [fullname] = useState(user.fullname);
   const [username] = useState(user.username);
   const [password, setPassword] = useState(user.password);
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [gender] = useState(user.gender);
   const [phno] = useState(user.phno);
@@ -39,6 +42,7 @@ const ProfileInfo = () => {
     [
       id,
       password,
+      programId
     ].every(Boolean) && updateRequestStatus === "idle";
 
   const dispatch = useDispatch();
@@ -76,7 +80,7 @@ const ProfileInfo = () => {
               township,
               city,
               password,
-            },
+            },programId
           })
         ).unwrap();
         dispatch(logout());

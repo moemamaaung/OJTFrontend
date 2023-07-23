@@ -25,7 +25,7 @@ const CreateMarkForm = (props) => {
   const [username,setUsername] = useState("");
   const [fullname,setFullname] = useState("");
   const [courseId, setCourseId] = useState("");
-  const [examId, setExamId] = useState("");
+  // const [examId, setExamId] = useState("");
   const [addRequestStatus, setAddRequestStatus] = useState("idle");
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const CreateMarkForm = (props) => {
   const onFullnameChange = (e) => setFullname(e.target.value);
   const onCourseIdChange = (e) => setCourseId(e.target.value);
 
-  const onExamIdChange = (e) => setExamId(e.target.value);
+  // const onExamIdChange = (e) => setExamId(e.target.value);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -50,7 +50,7 @@ const CreateMarkForm = (props) => {
 
   }, [dispatch]);
 
-  const exams = useSelector(selectAllExams);
+  // const exams = useSelector(selectAllExams);
   const programs = useSelector(selectAllPrograms)
   const users = useSelector(getUser)
   const course = useSelector(selectAllCourses)
@@ -59,7 +59,7 @@ const CreateMarkForm = (props) => {
 
   const cid = courseId
 
-  console.log(cid)
+  console.log("CourseId"+cid)
  
   const courses1 = useSelector((state) => selectProgramCourseById(state,Number(courseId)))
 
@@ -71,7 +71,7 @@ const CreateMarkForm = (props) => {
     fecthExams()
   }, []);
 
-  const canSave = [subject1Score,courseId,examId, subject2Score, subject3Score, subject4Score, subject5Score, subject6Score,username,fullname].every(Boolean) && addRequestStatus === "idle";
+  const canSave = [subject1Score,courseId, subject2Score, subject3Score, subject4Score, subject5Score, subject6Score,username,fullname].every(Boolean) && addRequestStatus === "idle";
 console.log(canSave)
   const onSubmit = (event) => {
     event.preventDefault();
@@ -85,7 +85,7 @@ console.log(canSave)
             mark: {
               subject1Score, subject2Score,fullname,username, subject3Score, subject4Score, subject5Score, subject6Score
             },
-            courseId, examId
+            courseId
           })
         );
       } catch (error) {
@@ -167,7 +167,7 @@ console.log(canSave)
                   </div>
                 </div>
 
-                <div className={classes.inputGroup}>
+                {/* <div className={classes.inputGroup}>
                   <div className={classes.inputBox}>
                     <div className="row">
                       <div className="col md-6">
@@ -190,7 +190,7 @@ console.log(canSave)
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
 
 
@@ -207,7 +207,7 @@ console.log(canSave)
                           value={courseId}
                           onChange={onCourseIdChange}
                         >
-                          <option value="">Choose ProgramName </option>
+                          <option value="">Choose Program </option>
                           {programs.map((program) => (
                             <option value={program.id}>
                               {program.programName}

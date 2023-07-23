@@ -21,7 +21,7 @@ const TeacherItem = (props) => {
                 </div>
                 <div class={classes.teamcontent}>
 
-                    <h3 class="title">{props.name}</h3>
+                    <h5 class="title fw-bold">{props.name}</h5>
                     <span class="post">{props.qualification}</span>
                 </div>
             </div>

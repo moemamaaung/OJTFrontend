@@ -97,7 +97,7 @@
 }
 
 .siginbtn {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 700;
   font-size: .75rem;
   line-height: 1rem;
@@ -153,7 +153,7 @@
   margin:50; padding:50px;
   box-sizing: border-box;
   outline: none; border:none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   transition: all .2s linear;
 }
 

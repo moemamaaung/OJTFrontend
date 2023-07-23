@@ -38,6 +38,7 @@ const ApplicantList = () => {
                 township={applicant.township}
                 city={applicant.city}
                 edu={applicant.edu}
+                status = {applicant.status}
                 exp={applicant.exp}
                 program = {applicant.program}
                 />

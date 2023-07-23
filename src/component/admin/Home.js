@@ -58,10 +58,10 @@ const Home = () => {
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Login Screens:</h6>
-
+{/* 
               <Link to="/admin/register" class="collapse-item">
                 Register
-              </Link>
+              </Link> */}
               <Link
                 to="/"
                 class="collapse-item"
@@ -114,9 +114,9 @@ const Home = () => {
               <Link to="/admin/courseTable" className="collapse-item">
                 Courses
               </Link>
-              <Link to="/admin/examTable" className="collapse-item">
+              {/* <Link to="/admin/examTable" className="collapse-item">
                 Exams
-              </Link>
+              </Link> */}
               <Link to="/admin/markTable" className="collapse-item">
                 Marks
               </Link>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { selectLecturerById } from './lecturerSlice'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const TeacherDetail = () => {
@@ -39,7 +39,7 @@ const TeacherDetail = () => {
                 </div>
              
               </div>
-              <a className="btn btn-primary py-3 px-5 mt-2" href="#">Read More</a>
+              <Link to='/teacher' className="btn btn-primary py-3 px-5 mt-2" href="#">Back</Link>
             </div>
           </div>
         </div>

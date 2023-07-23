@@ -43,14 +43,16 @@ const LecturerTable = () => {
           <thead>
             <tr>
               <th>Id</th>
-              <th>Profile</th>
               <th>Lecturer Name</th>
-              <th>Email</th>
+              <th>Profile</th>
+            
+              {/* <th>Email</th>
               <th>PhoneNo</th>
               <th>Address</th>
               <th>Gender</th>
               <th>Age</th>
-              <th>Qualify</th>
+              <th>Qualify</th> */}
+              <th>Details</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -58,16 +60,18 @@ const LecturerTable = () => {
             <LecturerList />
           </tbody>
           <tfoot>
-            <tr>
+          <tr>
               <th>Id</th>
-              <th>Profile</th>
               <th>Lecturer Name</th>
-              <th>Email</th>
+              <th>Profile</th>
+            
+              {/* <th>Email</th>
               <th>PhoneNo</th>
               <th>Address</th>
               <th>Gender</th>
               <th>Age</th>
-              <th>Qualify</th>
+              <th>Qualify</th> */}
+              <th>Details</th>
               <th>Actions</th>
             </tr>
           </tfoot>

@@ -54,7 +54,7 @@ const Register = (props) => {
   };
 
   const canSave =
-    [id,fullname, username, password, phno, gender, street, township, city].every(
+    [id,fullname, username, password, phno, gender, street, township, city,PROGRAM_ID].every(
       Boolean
     ) && addRequestStatus === "idle";
 

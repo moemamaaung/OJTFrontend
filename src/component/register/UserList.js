@@ -7,7 +7,7 @@ import { fetchApplicants } from "../../applicant/applicantSlice";
 function UserList(){
     const dispatch = useDispatch();
 
-    const user = useSelector(getUser)
+    const users = useSelector(getUser)
 
     
     const userStatus = useSelector(getUserStatus)
@@ -29,7 +29,8 @@ function UserList(){
     }
  
     if(userStatus === 'succeeded'){
-        content = user.map(
+        if(Array.isArray(users)){
+        content = users.map(
             (student)=>(
                     <UserItem
                     id = {student.id}
@@ -48,6 +49,7 @@ function UserList(){
                    
     
                 );
+            }
             }
             
     

@@ -56,6 +56,9 @@ import MarkTable from "./component/mark/MarkTable";
 import CreateMarkForm from "./component/mark/CreateMarkForm";
 import Timetable from "./component/student/Timetable";
 import MarkDetail from "./component/mark/MarkDetail";
+import LecturerDetails from "./lecturer/LecturerDetails";
+import TeacherCard from "./lecturer/TeacherCard";
+import ViewApplicantItem from "./applicant/ViewApplicantItem";
 
 function App() {
   return (
@@ -106,7 +109,7 @@ function App() {
           <Route path="/admin/confirm" element={<ConfirmTable />} />
 
           <Route path="/admin/email/:userId" element={<EmailSendForm />} />
-
+          <Route path="/admin/lecturer/:lecturerId" element={<LecturerDetails />} />
           <Route path="/admin/lecturerTable" element={<LecturerTable />} />
           <Route path="/admin/createLecturer" element={<CreateLecturerForm />}/>
           <Route
@@ -133,7 +136,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About1 />} />
         <Route path="/contact" element={<Contactus />} />
-        <Route path="/teacher" element={<TeacherListCard />} />
+        <Route path="/teacher" element={<TeacherCard />} />
         <Route path=":teacherId" element={<TeacherDetail />} />
         {/* <Route path="/sample" element={<TeacherSample/>} /> */}
         <Route path="/register" element={<Register />} />

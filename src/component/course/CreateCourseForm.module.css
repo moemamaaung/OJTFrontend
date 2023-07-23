@@ -212,4 +212,14 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+    .b{
+      background-color: white;
+     
+      
+    }
+    .b:hover{
+      background:white;
+  
+
+    }
   

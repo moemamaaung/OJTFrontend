@@ -7,6 +7,7 @@ import $ from "jquery";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "datatables.net-dt/css/jquery.dataTables.min.css";
+import { fetchApplicants } from "../../applicant/applicantSlice";
 
 const UserTable = () => {
   $(document).ready(function () {
@@ -18,6 +19,7 @@ const UserTable = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchApplicants())
     dispatch(fetchUsers());
   }, [dispatch]);
 

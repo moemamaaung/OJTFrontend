@@ -39,11 +39,7 @@ const UserDetail = () => {
               </div>
             </div>
 
-            <div className={classes.inputGroup}>
-              <div className={classes.inputBox}>
-               Password:{user.password}
-              </div>
-            </div>
+           
 
   
           </div>

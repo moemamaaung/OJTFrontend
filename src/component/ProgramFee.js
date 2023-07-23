@@ -26,7 +26,7 @@ const ProgramFee = (props) => {
           
                 </ul>
                 <div className={classes.btnarea}>
-                  <Link to= {`/applicant/add/${props.id}`}>Join</Link>
+                  <Link >Join</Link>
                 </div>
               </div>
             </div>

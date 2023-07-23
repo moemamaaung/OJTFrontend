@@ -15,7 +15,7 @@ export const addNewMarks = createAsyncThunk(
   "marks/addNewMarks",
   async (data) => {
     console.log("in the addmark "+data)
-    const response = await axios.post(`${POST_NEW_MARK}${data.courseId}/${data.examId}`, data.mark);
+    const response = await axios.post(`${POST_NEW_MARK}${data.courseId}`, data.mark);
     return response.data;
   }
 );

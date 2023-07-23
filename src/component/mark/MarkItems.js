@@ -12,12 +12,13 @@ const MarkItems = (props) => {
   const t = `table table-striped  table-bordered mt-1 w-50 mt-4 ${classes.t}`
   const p = `text-center  `
   const dispatch = useDispatch();
+  console.log(props)
 
-  const pId = props.programId
-  console.log(pId)
+  // const pId = props.programId
+  // console.log(pId)
 
-  const users =useSelector((state)=>selectProgramUserById(state,Number(pId)))
-  console.log(users)
+  // const users =useSelector((state)=>selectProgramUserById(state,Number(pId)))
+  // console.log(users)
 
   const [isModalOpen, setModalOpen] = useState(false)
   
@@ -51,6 +52,7 @@ const MarkItems = (props) => {
     <tr>
     <td>{props.id}</td>
       <td>{props.fullname}</td>
+      <td>{props.username}</td>
       <td>{props.program.programName}</td>
       {/* <td>{props.exam.examType}</td> */}
       <td><Link to={`/admin/mark/${props.id}`} style={{textDecoration : 'none'}}>View Scores </Link></td>
